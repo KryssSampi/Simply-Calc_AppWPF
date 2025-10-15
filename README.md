@@ -5,6 +5,7 @@
 ![WPF](https://img.shields.io/badge/WPF-Windows-0078D4?logo=windows)
 ![C#](https://img.shields.io/badge/C%23-12.0-239120?logo=csharp)
 ![License](https://img.shields.io/badge/license-MIT-green)
+![Demo](./Ressources/Demo.png)  
 
 Une calculatrice scientifique moderne développée en WPF (.NET 8.0) avec une architecture propre et maintenable utilisant le pattern **Partial Classes** pour une séparation optimale des responsabilités.
 
