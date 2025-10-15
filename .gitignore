@@ -28,9 +28,11 @@ x86/
 [Aa][Rr][Mm]64/
 bld/
 [Bb]in/
+!bin/
+!bin/Release
 [Oo]bj/
 [Oo]ut/
-[Ll]og/
+!log/
 [Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
