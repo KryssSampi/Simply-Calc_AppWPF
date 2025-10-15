@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -97,6 +98,14 @@ namespace Simply_Calc_AppWPF.Services
     /// </summary>
     public class ErrorHandler
     {
+        private static readonly string Default_Error_LogPath = GetDefaultErrorLogPath();
+
+        private static string GetDefaultErrorLogPath()
+        {
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string projectRoot = System.IO.Path.GetFullPath(System.IO.Path.Combine(baseDirectory, @"..\..\.."));
+            return System.IO.Path.Combine(projectRoot, "log", "error.log");
+        }
         private readonly List<ErrorInfo> _errorHistory;
         private readonly int _maxHistorySize;
         private string? _logFilePath;
@@ -368,10 +377,11 @@ namespace Simply_Calc_AppWPF.Services
         /// Configure le chemin du fichier de log.
         /// </summary>
         /// <param name="filePath">Chemin du fichier</param>
-        public void SetLogFilePath(string? filePath)
+        public void SetLogFilePath(string? filePath = null)
         {
-            _logFilePath = filePath;
+            _logFilePath = filePath ?? Default_Error_LogPath;
         }
+
 
         /// <summary>
         /// Écrit une erreur dans le fichier de log.

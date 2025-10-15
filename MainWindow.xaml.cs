@@ -162,11 +162,9 @@ namespace Simply_Calc_AppWPF
             {
                 try
                 {
-                    string logPath = System.IO.Path.Combine(
-                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                        "CalculatriceWPF",
-                        "history.csv"
-                    );
+                    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    string projectRoot = System.IO.Path.GetFullPath(System.IO.Path.Combine(baseDirectory, @"..\..\.."));
+                    string logPath = System.IO.Path.Combine(projectRoot, "log", "Operation.log");
 
                     System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(logPath));
                     _history.ExportToCsv(logPath);

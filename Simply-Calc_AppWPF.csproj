@@ -7,6 +7,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Ressources\icons8-calculator-480.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="log\Operation - Copier.log" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Ressources\icons8-calculator-480.ico" />
+  </ItemGroup>
 
 </Project>

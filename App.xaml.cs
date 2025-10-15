@@ -13,21 +13,19 @@ namespace Simply_Calc_AppWPF
         /// <summary>
         /// Événement de démarrage de l'application.
         /// </summary>
-        //protected override void OnStartup(StartupEventArgs e)
-        //{
-        //    base.OnStartup(e);
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
 
-        //    // Configuration culture (format nombres avec point décimal)
-        //    Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-        //    Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
+            // Configuration culture (format nombres avec point décimal)
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
 
-        //    // Configuration encodage console UTF-8
-        //    Console.OutputEncoding = System.Text.Encoding('UTF-8');
 
-        //    // Gestionnaire d'exceptions non gérées
-        //    AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
-        //    DispatcherUnhandledException += OnDispatcherUnhandledException;
-        //}
+            // Gestionnaire d'exceptions non gérées
+            AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
+            DispatcherUnhandledException += OnDispatcherUnhandledException;
+        }
 
         /// <summary>
         /// Gestionnaire d'exceptions non gérées du domaine d'application.
