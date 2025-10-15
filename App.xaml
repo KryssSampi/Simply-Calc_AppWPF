@@ -1,0 +1,102 @@
+﻿<Application x:Class="Simply_Calc_AppWPF.App"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- Template de base avec bordures rondes et les effets de clic et de survol -->
+        <ControlTemplate x:Key="TemplateDeBase" TargetType="Button">
+            <Border x:Name="border"
+        Background="{TemplateBinding Background}" 
+        BorderBrush="{TemplateBinding BorderBrush}" 
+        BorderThickness="{TemplateBinding BorderThickness}" 
+        CornerRadius="25"
+        Padding="{TemplateBinding Padding}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Uid}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <!-- Template pour le bouton qui permet de changer de signe -->
+        <ControlTemplate x:Key="TemplateChangerSigne" TargetType="Button">
+            <Border x:Name="border"
+                Background="{TemplateBinding Background}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}" 
+                CornerRadius="10"
+                Padding="{TemplateBinding Padding}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Uid}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <!-- Style de base commun à tous les boutons-->
+        <Style TargetType="Button" x:Key="StyleDeBase">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Template" Value="{StaticResource TemplateDeBase}"/>
+        </Style>
+
+        <!-- Boutons de fonctions -->
+        <Style TargetType="Button" x:Key="StyleFonctions" BasedOn="{StaticResource StyleDeBase}">
+            <Setter Property="Background" Value="#D4D4D2 "/>
+            <Setter Property="Foreground" Value="#000000"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontWeight" Value="ExtraBold" />
+            <Setter Property="Tag" Value="#E5E5E2"/>
+            <Setter Property="Uid" Value="#D4D4D2"/>
+        </Style>
+
+        <!-- Boutons d'opérateurs-->
+        <Style TargetType="Button" x:Key="StyleOperateurs" BasedOn="{StaticResource StyleDeBase}">
+            <Setter Property="Background" Value="#FF9500"/>
+            <Setter Property="Tag" Value="#FFA733"/>
+            <Setter Property="Uid" Value="#CC7A00"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontWeight" Value="ExtraBold" />
+        </Style>
+
+        <!-- Boutons de nombres-->
+        <Style TargetType="Button" x:Key="StyleNombres" BasedOn="{StaticResource StyleDeBase}">
+            <Setter Property="Background" Value="#333333"/>
+            <Setter Property="Tag" Value="#4A4A4A"/>
+            <Setter Property="Uid" Value="#1C1C1C"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontWeight" Value="Medium" />
+        </Style>
+
+        <!-- Boutons +/- -->
+        <Style TargetType="Button" x:Key="StyleChangerSigne" BasedOn="{StaticResource StyleNombres}">
+            <Setter Property="Template" Value="{StaticResource TemplateChangerSigne}"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontWeight" Value="ExtraBold" />
+        </Style>
+
+        <!-- Bouton égale-->
+        <Style TargetType="Button" x:Key="StyleEgale" BasedOn="{StaticResource StyleOperateurs}">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontWeight" Value="ExtraBold" />
+        </Style>
+
+    </Application.Resources>
+</Application>

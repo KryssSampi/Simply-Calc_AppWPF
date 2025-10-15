@@ -1,0 +1,87 @@
+﻿<Window x:Class="Simply_Calc_AppWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simply_Calc_AppWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="300" Background="#000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Border Padding="5">
+        <Grid>
+            <!-- Lignes et colonnes -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="28"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--#region Affichage -->
+            <TextBox IsReadOnly="True" Cursor="Arrow" Background="Black" BorderThickness="0" Text="" Grid.ColumnSpan="5" HorizontalAlignment="Right"  FontSize="35" VerticalAlignment="Center" Name="operationTexte" Foreground="White" TextChanged="OperationTexte_TextChanged"/>
+            <TextBlock Text="=" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" Foreground="DimGray" />
+            <TextBox IsReadOnly="True" Cursor="Arrow" Background="Black" BorderThickness="0" Text="0" Grid.Row="1"   Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Right" FontSize="25"  FontStyle="Italic" Foreground="DimGray" Name="ResultatBlock"  VerticalAlignment="Center"  TextAlignment="Right" TextChanged="ResultatBlock_TextChanged"/>
+            <TextBox IsReadOnly="True" Cursor="Arrow" Background="Black" BorderThickness="0" Text="0" Grid.ColumnSpan="5" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="50" Foreground="White" Name="resultatTexte" TextChanged="resultatTexte_TextChanged"/>
+
+            <!--#endregion-->
+
+            <!--#region Fonctions trigonométriques -->
+            <Button Content="Sin" Grid.Row="3" Style="{StaticResource StyleFonctions}" Name="sinBouton" />
+            <Button Content="Cos" Grid.Row="3" Grid.Column="1" Style="{StaticResource StyleFonctions}" Name="cosBouton" />
+            <Button Content="Tan" Grid.Row="3" Grid.Column="2" Style="{StaticResource StyleFonctions}" Name="tanBouton" />
+            <Button Content="CE" Grid.Row="3" Grid.Column="3" Style="{StaticResource StyleFonctions}" Name="effacerEntreeBouton"  />
+            <Button Content="C" Grid.Row="3" Grid.Column="4" Style="{StaticResource StyleFonctions}" Name="effacerToutBouton" />
+            <!--#endregion-->
+
+            <!--#region Fonctions inverses -->
+            <Button Content="ArcSin" Grid.Row="4" Style="{StaticResource StyleFonctions}" Name="arcSinBouton"/>
+            <Button Content="ArCos" Grid.Row="4" Grid.Column="1" Style="{StaticResource StyleFonctions}" Name="arcCosBouton" />
+            <Button Content="ArcTan" Grid.Row="4" Grid.Column="2" Style="{StaticResource StyleFonctions}" Name="arcTanBouton" />
+            <Button Content="Back" Grid.Row="4" Grid.Column="3" Style="{StaticResource StyleFonctions}" Name="effacerDernierBoutton" />
+            <Button Content="÷" Grid.Row="4" Grid.Column="4" Style="{StaticResource StyleOperateurs}" Name="divisionBouton" />
+            <!--#endregion-->
+
+            <!--#region Nombres 7-8-9, π et x -->
+            <Button Content="π" Grid.Row="5" Style="{StaticResource StyleNombres}" Name="piBouton" />
+            <Button Content="7" Grid.Row="5" Grid.Column="1" Style="{StaticResource StyleNombres}" Name="septBouton" />
+            <Button Content="8" Grid.Row="5" Grid.Column="2" Style="{StaticResource StyleNombres}" Name="huitBouton" />
+            <Button Content="9" Grid.Row="5" Grid.Column="3" Style="{StaticResource StyleNombres}" Name="neufBouton" />
+            <Button Content="×" Grid.Row="5" Grid.Column="4" Style="{StaticResource StyleOperateurs}" Name="multiplicationBouton" />
+            <!--#endregion-->
+
+            <!--#region Nombres 4-5-6, e et - -->
+            <Button Content="e" Grid.Row="6" Style="{StaticResource StyleNombres}" Name="expBouton" />
+            <Button Content="4" Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleNombres}" Name="quatreBouton" />
+            <Button Content="5" Grid.Row="6" Grid.Column="2" Style="{StaticResource StyleNombres}" Name="cinqBouton" />
+            <Button Content="6" Grid.Row="6" Grid.Column="3" Style="{StaticResource StyleNombres}" Name="sixBouton" />
+            <Button Content="-" Grid.Row="6" Grid.Column="4" Style="{StaticResource StyleOperateurs}" Name="soustractionBouton"/>
+            <!--#endregion-->
+
+            <!--#region Nombres 1-2-3, +/- et + -->
+            <Button Content="+/-" Grid.Row="7" Grid.RowSpan="2" Style="{StaticResource StyleChangerSigne}" Height="NaN" Width="NaN" Name="changerSigneBouton"/>
+            <Button Content="1" Grid.Row="7" Grid.Column="1" Style="{StaticResource StyleNombres}" Name="unBouton"/>
+            <Button Content="2" Grid.Row="7" Grid.Column="2" Style="{StaticResource StyleNombres}" Name="deuxBouton" />
+            <Button Content="3" Grid.Row="7" Grid.Column="3" Style="{StaticResource StyleNombres}" Name="troisBouton" />
+            <Button Content="+" Grid.Row="7" Grid.Column="4" Style="{StaticResource StyleOperateurs}" Name="additionBouton" />
+            <!--#endregion-->
+
+            <!--#region Dernière ligne -->
+            <Button Content="0" Grid.Row="8" Grid.Column="1" Style="{StaticResource StyleNombres}" Name="zeroBouton" />
+            <Button Content="." Grid.Row="8" Grid.Column="2" Style="{StaticResource StyleNombres}" Name="pointBouton" />
+            <Button Content="=" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource StyleEgale}" Name="egalBouton" />
+            <!--#endregion-->
+        </Grid>
+    </Border>
+</Window>
